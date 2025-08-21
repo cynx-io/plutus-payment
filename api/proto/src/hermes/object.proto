@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package hermes;
+
+option go_package = "hermes/api/proto";
+
+message User {
+  int32 id = 1;
+  string auth0_id = 2;
+  string email = 3;
+  string name = 4;
+  string subscription_tier = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+  google.protobuf.Timestamp last_login_at = 8;
+  bool is_active = 9;
+}

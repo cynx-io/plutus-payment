@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package hermes;
+
+option go_package = "hermes/api/proto";
+
+import "google/protobuf/timestamp.proto";
+import "core.proto";
+import "hermes/generic.proto";
+import "hermes/object.proto";
+
+// User service definition
+service HermesUserService {
+  rpc UpsertUser(UpsertUserRequest) returns (UserResponse) {}
+  rpc GetUserById(GetUserByIdRequest) returns (UserResponse) {}
+}
+
+message UpsertUserRequest {
+  core.BaseRequest base = 1;
+  string auth0_id = 2;
+  string email = 3;
+  optional string name = 4;
+  optional string subscription_tier = 5;
+  optional google.protobuf.Timestamp last_login_at = 6;
+  optional bool is_active = 7;
+}
+
+message GetUserByIdRequest {
+  core.BaseRequest base = 1;
+  int32 id = 2;
+}
+
+message UserResponse {
+  core.BaseResponse base = 1;
+  User user = 2;
+}

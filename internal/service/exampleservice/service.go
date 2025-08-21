@@ -1,7 +1,7 @@
 package exampleservice
 
 import (
-	"github.com/cynx-io/micro-name/internal/repository/database"
+	"github.com/cynx-io/plutus-payment/internal/repository/database"
 )
 
 type Service struct {

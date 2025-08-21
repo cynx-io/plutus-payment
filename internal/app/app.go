@@ -3,7 +3,7 @@ package app
 import (
 	"context"
 	"github.com/cynx-io/cynx-core/src/logger"
-	"github.com/cynx-io/micro-name/internal/dependencies/config"
+	"github.com/cynx-io/plutus-payment/internal/dependencies/config"
 )
 
 type App struct {
@@ -28,8 +28,8 @@ func NewApp(ctx context.Context) (*App, error) {
 	logger.Info(ctx, "Initializing Repositories")
 	repos := NewRepos(dependencies)
 
-	logger.Info(ctx, "Initializing Use Cases")
-	services := NewServices(repos, dependencies)
+	logger.Info(ctx, "Initializing Services")
+	services := NewServices(repos)
 
 	logger.Info(ctx, "App initialized")
 	return &App{

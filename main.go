@@ -3,8 +3,9 @@ package main
 import (
 	"context"
 	"github.com/cynx-io/cynx-core/src/logger"
-	"github.com/cynx-io/micro-name/internal/app"
-	"github.com/cynx-io/micro-name/internal/dependencies/config"
+	"github.com/cynx-io/plutus-payment/internal/app"
+	"github.com/cynx-io/plutus-payment/internal/dependencies/config"
+	"github.com/cynx-io/plutus-payment/internal/grpc"
 	"github.com/sirupsen/logrus"
 )
 
@@ -21,10 +22,10 @@ func main() {
 	logger.Init(logger.LoggerConfig{
 		Level:            logLevel,
 		ElasticsearchURL: []string{config.Config.Elastic.Url},
-		ServiceName:      "micro-name",
+		ServiceName:      "plutus-payment",
 	})
 
-	logger.Info(ctx, "Starting microname")
+	logger.Info(ctx, "Starting plutus")
 	ctx, cancel := context.WithCancel(context.Background())
 	defer func() {
 		cancel()
@@ -36,14 +37,13 @@ func main() {
 		panic(err)
 	}
 
-	logger.Info(ctx, "Creating servers")
-	servers, err := application.NewServers()
-	if err != nil {
-		panic(err)
+	logger.Info(ctx, "Initializing GRPC")
+	grpcServer := grpc.Server{
+		Services: application.Services,
 	}
 
-	logger.Info(ctx, "Starting servers")
-	if err := servers.Start(ctx); err != nil {
-		panic(err)
+	err = grpcServer.Start(ctx)
+	if err != nil {
+		panic("failed to start grpc server " + err.Error())
 	}
 }

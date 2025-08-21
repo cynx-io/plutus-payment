@@ -10,7 +10,7 @@ func setResponse[Resp response.Generic](resp Resp, code response.Code) {
 }
 
 func Success[Resp response.Generic](resp Resp) {
-	setResponse(resp, codeSuccess)
+	setResponse(resp, CodeSuccess)
 }
 
 func ErrorValidation[Resp response.Generic](resp Resp) {
@@ -35,4 +35,20 @@ func ErrorInvalidCredentials[Resp response.Generic](resp Resp) {
 
 func ErrorInternal[Resp response.Generic](resp Resp) {
 	setResponse(resp, codeInternalError)
+}
+
+func ErrorHermes[Resp response.Generic](resp Resp) {
+	setResponse(resp, codeInternalError)
+}
+
+func ErrorDatabaseCustomer[Resp response.Generic](resp Resp) {
+	setResponse(resp, codeDatabaseCustomerError)
+}
+
+func ErrorDatabaseInvoice[Resp response.Generic](resp Resp) {
+	setResponse(resp, codeDatabaseInvoiceError)
+}
+
+func ErrorXendit[Resp response.Generic](resp Resp) {
+	setResponse(resp, codeXenditError)
 }

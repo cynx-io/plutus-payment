@@ -11,7 +11,7 @@ RUN go mod download
 COPY . .
 
 # Build your binary
-RUN go build -o microname main.go
+RUN go build -o plutus main.go
 
 # Final stage
 FROM alpine:latest
@@ -19,7 +19,7 @@ FROM alpine:latest
 WORKDIR /app
 
 # Copy the binary from builder
-COPY --from=builder /app/microname .
+COPY --from=builder /app/plutus .
 
 # Copy config and env files if needed
 COPY config.json .
@@ -29,4 +29,4 @@ COPY .env .
 EXPOSE 5002
 
 # Run the binary
-CMD ["./microname"]
+CMD ["./plutus"]

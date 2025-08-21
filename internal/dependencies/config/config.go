@@ -11,6 +11,12 @@ type AppConfig struct {
 		Url   string `json:"url"`
 		Level string `json:"level"`
 	} `json:"elastic"`
+	Xendit struct {
+		ApiKey string `mapstructure:"api_key"`
+	} `mapstructure:"xendit"`
+	Hermes struct {
+		Url string `mapstructure:"url"`
+	} `mapstructure:"hermes"`
 	App struct {
 		Name    string `mapstructure:"name"`
 		Address string `mapstructure:"address"`

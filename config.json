@@ -1,8 +1,8 @@
 {
   "app": {
     "address": "0.0.0.0",
-    "port": 5001,
-    "name": "Microname",
+    "port": 5006,
+    "name": "Plutus",
     "debug": true,
     "key": "sashimi"
   },
@@ -13,7 +13,7 @@
   "database": {
     "host": "devspace",
     "port": 30306,
-    "database": "db_microname",
+    "database": "db_plutus",
     "username": "cynx",
     "password": "derwin334",
     "dialect": "mysql",
@@ -24,5 +24,8 @@
       "acquire": 30000,
       "idle": 10000
     }
+  },
+  "hermes": {
+    "url": "devspace:31501"
   }
 }

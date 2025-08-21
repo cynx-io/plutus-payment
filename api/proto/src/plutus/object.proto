@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package plutus;
+
+option go_package = "plutus/api/proto";
+
+import "core.proto";
+
+message PaymentInvoice {
+  string id = 1;
+  string external_id = 2;
+  string request_id = 3;
+  PaymentInvoiceStatus status = 4;
+  string payment_link_url = 5;
+  google.protobuf.Timestamp expires_at = 6;
+  int64 amount = 7;
+  string currency = 8;
+  string description = 9;
+  string provider = 10;
+  int32 customer_id = 11;
+}
+
+enum PaymentInvoiceStatus {
+  PAYMENT_INVOICE_STATUS_PENDING = 0;
+  PAYMENT_INVOICE_STATUS_COMPLETED = 1;
+  PAYMENT_INVOICE_STATUS_FAILED = 2;
+}

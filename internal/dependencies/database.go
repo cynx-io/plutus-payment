@@ -4,7 +4,8 @@ import (
 	"context"
 	"fmt"
 	"github.com/cynx-io/cynx-core/src/logger"
-	"github.com/cynx-io/micro-name/internal/dependencies/config"
+	"github.com/cynx-io/plutus-payment/internal/dependencies/config"
+	"github.com/cynx-io/plutus-payment/internal/model/entity"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	gormlogger "gorm.io/gorm/logger"
@@ -60,7 +61,7 @@ func (client *DatabaseClient) RunMigrations(ctx context.Context) error {
 
 	logger.Info(ctx, "Running database migrations")
 	//err := client.Db.AutoMigrate(entity.TblExample{})
-	err := client.Db.AutoMigrate()
+	err := client.Db.AutoMigrate(entity.TblCustomer{}, entity.TblPaymentInvoice{})
 	if err != nil {
 		return fmt.Errorf("failed to run migrations: %w", err)
 	}

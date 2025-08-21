@@ -1,5 +1,5 @@
 version: v1beta1
-name: github.com/cynx-io/micro-name
+name: github.com/cynx-io/plutus-payment
 build:
   roots:
     - api/proto/src
