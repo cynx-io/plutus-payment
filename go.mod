@@ -3,7 +3,7 @@ module github.com/cynx-io/plutus-payment
 go 1.24.3
 
 require (
-	github.com/cynx-io/cynx-core v0.0.36
+	github.com/cynx-io/cynx-core v0.0.37
 	github.com/sirupsen/logrus v1.9.3
 	github.com/xendit/xendit-go/v7 v7.0.0
 	golang.org/x/sync v0.14.0

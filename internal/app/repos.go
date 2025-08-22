@@ -1,6 +1,7 @@
 package app
 
 import (
+	pbananke "github.com/cynx-io/plutus-payment/api/proto/gen/ananke"
 	pbhermes "github.com/cynx-io/plutus-payment/api/proto/gen/hermes"
 	"github.com/cynx-io/plutus-payment/internal/repository/database"
 	xendit2 "github.com/cynx-io/plutus-payment/internal/repository/externalapi/xendit"
@@ -14,8 +15,9 @@ type Repos struct {
 	TblCustomer       *database.TblCustomer
 	TblPaymentInvoice *database.TblPaymentInvoice
 
-	HermesUserClient pbhermes.HermesUserServiceClient
-	XenditClient     *xendit.APIClient
+	HermesUserClient     pbhermes.HermesUserServiceClient
+	AnankePreorderClient pbananke.PreorderServiceClient
+	XenditClient         *xendit.APIClient
 }
 
 func NewRepos(dependencies *Dependencies) *Repos {
@@ -25,7 +27,8 @@ func NewRepos(dependencies *Dependencies) *Repos {
 		TblCustomer:       database.NewCustomerRepo(dependencies.DatabaseClient.Db),
 		TblPaymentInvoice: database.NewPaymentInvoiceRepo(dependencies.DatabaseClient.Db),
 
-		HermesUserClient: micro.NewHermesUserClient(),
+		HermesUserClient:     micro.NewHermesUserClient(),
+		AnankePreorderClient: micro.NewAnankeUserClient(),
 
 		XenditClient: xendit2.New(),
 	}

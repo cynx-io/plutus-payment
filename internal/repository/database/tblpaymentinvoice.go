@@ -31,3 +31,15 @@ func (T *TblPaymentInvoice) CreatePaymentInvoice(ctx context.Context, invoice *e
 	}
 	return nil
 }
+
+func (T *TblPaymentInvoice) UpdatePaymentInvoiceStatus(ctx context.Context, id string, status int32) error {
+	result := T.DB.WithContext(ctx).
+		Model(&entity.TblPaymentInvoice{}).
+		Where("id = ?", id).
+		Update("status", status)
+
+	if result.Error != nil {
+		return result.Error
+	}
+	return nil
+}

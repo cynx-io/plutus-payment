@@ -19,6 +19,7 @@ const (
 
 	// Microservice Errors
 	codeHermesError response.Code = "M-HR"
+	codeAnankeError response.Code = "M-AN"
 
 	// Database Errors
 	codeDatabaseCustomerError response.Code = "D-CR"
@@ -42,6 +43,7 @@ var responseCodeNames = map[response.Code]string{
 
 	// Microservice Errors
 	codeHermesError: "Hermes Error",
+	codeAnankeError: "Ananke Error",
 
 	// Database Errors
 	codeDatabaseCustomerError: "Database Customer Error",

@@ -20,3 +20,17 @@ func ToProtoInvoiceStatus(status string) proto.PaymentInvoiceStatus {
 
 	return proto.PaymentInvoiceStatus_FAILED
 }
+
+func XenditInvoiceStatusToProto(status string) proto.PaymentInvoiceStatus {
+	switch status {
+	case "PENDING":
+		return proto.PaymentInvoiceStatus_PENDING
+	case "EXPIRED":
+		return proto.PaymentInvoiceStatus_FAILED
+	case "PAID":
+		return proto.PaymentInvoiceStatus_COMPLETED
+	case "FAILED":
+		return proto.PaymentInvoiceStatus_FAILED
+	}
+	return proto.PaymentInvoiceStatus_FAILED
+}

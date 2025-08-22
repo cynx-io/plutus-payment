@@ -1,7 +1,7 @@
 filippo.io/edwards25519 v1.1.0 h1:FNf4tywRC1HmFuKW5xopWpigGjJKiJSV0Cqo0cJWDaA=
 filippo.io/edwards25519 v1.1.0/go.mod h1:BxyFTGdWcka3PhytdK4V28tE5sGfRvvvRV7EaN4VDT4=
-github.com/cynx-io/cynx-core v0.0.36 h1:LlUa3cX9HzuMvWhwDWVOmYr4TWJdipIsLeFIOEZRRMU=
-github.com/cynx-io/cynx-core v0.0.36/go.mod h1:1rqYb9VFIUFbiKEUgWt8OewNAAk/Ct4lTJcH3pOMUPU=
+github.com/cynx-io/cynx-core v0.0.37 h1:mZJRs9dXZ/cjbtR67BtI/O32lEKMbUi/tqSfOx4ulKY=
+github.com/cynx-io/cynx-core v0.0.37/go.mod h1:1rqYb9VFIUFbiKEUgWt8OewNAAk/Ct4lTJcH3pOMUPU=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

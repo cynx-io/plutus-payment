@@ -52,3 +52,7 @@ func ErrorDatabaseInvoice[Resp response.Generic](resp Resp) {
 func ErrorXendit[Resp response.Generic](resp Resp) {
 	setResponse(resp, codeXenditError)
 }
+
+func ErrorAnanke[Resp response.Generic](resp Resp) {
+	setResponse(resp, codeAnankeError)
+}

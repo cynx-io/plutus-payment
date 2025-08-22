@@ -12,7 +12,8 @@ type AppConfig struct {
 		Level string `json:"level"`
 	} `json:"elastic"`
 	Xendit struct {
-		ApiKey string `mapstructure:"api_key"`
+		ApiKey     string `mapstructure:"api_key"`
+		WebhookKey string `mapstructure:"webhook_key"`
 	} `mapstructure:"xendit"`
 	Hermes struct {
 		Url string `mapstructure:"url"`

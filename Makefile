@@ -40,6 +40,7 @@ proto-clean:
 	rm -rf $(PROTO_GEN_DIR)/*
 
 proto-gen:
+	buf dep update
 	@echo "Generating proto files..."
 	cd . && buf generate
 
