@@ -17,6 +17,9 @@ type AppConfig struct {
 	Hermes struct {
 		Url string `mapstructure:"url"`
 	} `mapstructure:"hermes"`
+	Ananke struct {
+		Url string `mapstructure:"url"`
+	} `mapstructure:"ananke"`
 	App struct {
 		Name    string `mapstructure:"name"`
 		Address string `mapstructure:"address"`

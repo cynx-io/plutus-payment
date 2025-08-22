@@ -33,12 +33,13 @@ message GetPaymentInvoiceByRequestIdRequest {
 message CreatePaymentInvoiceRequest {
   core.BaseRequest base = 1;
   int32 user_id = 2;
-  int32 amount = 3;
+  float amount = 3;
   string currency = 4;
   string description = 5;
   string success_return_url = 6;
   string failure_return_url = 7;
   int32 duration_in_seconds = 8;
+  PaymentFeature payment_feature = 9;
 }
 
 message PaymentInvoiceResponse {

@@ -14,7 +14,6 @@ import (
 	"gorm.io/gorm"
 	"net/http"
 	"strconv"
-	"strings"
 )
 
 func (s *Service) CreatePaymentInvoice(ctx context.Context, req *pb.CreatePaymentInvoiceRequest, resp *pb.PaymentInvoiceResponse) error {
@@ -58,7 +57,7 @@ func (s *Service) CreatePaymentInvoice(ctx context.Context, req *pb.CreatePaymen
 		}
 	}
 
-	paymentInvoiceId := helper2.FormatXenditExternalId(customer.Id, req.Base.RequestId)
+	paymentInvoiceId := helper2.FormatXenditExternalId(customer.Id, req.Base.RequestId, int32(req.PaymentFeature))
 
 	createInvoiceReq := *invoice.NewCreateInvoiceRequest(req.Base.RequestId, float64(req.Amount))
 	createInvoiceReq.SetCurrency(req.Currency)
@@ -124,18 +123,21 @@ func (s *Service) CreatePaymentInvoice(ctx context.Context, req *pb.CreatePaymen
 		return errors.New("failed to create invoice: response is nil")
 	}
 
+	invoiceStatus := helper2.ToProtoInvoiceStatus(createInvoiceResp.Status.String())
+
 	paymentInvoice := &entity.TblPaymentInvoice{
 		ExpiresAt:      createInvoiceResp.ExpiryDate,
 		Id:             paymentInvoiceId,
 		ExternalId:     *createInvoiceResp.Id,
 		RequestId:      req.Base.RequestId,
-		Status:         strings.ToUpper(createInvoiceResp.Status.String()),
+		Status:         int32(invoiceStatus),
 		PaymentLinkUrl: createInvoiceResp.InvoiceUrl,
 		Currency:       string(createInvoiceResp.GetCurrency()),
 		Description:    createInvoiceResp.GetDescription(),
 		Provider:       constant.ProviderXendit,
-		Amount:         int64(createInvoiceResp.Amount),
+		Amount:         float32(createInvoiceResp.Amount),
 		CustomerId:     customer.Id,
+		PaymentFeature: int32(req.PaymentFeature),
 	}
 	if err := s.TblPaymentInvoice.CreatePaymentInvoice(ctx, paymentInvoice); err != nil {
 		logger.Error(ctx, "failed to create payment invoice in database: ", err.Error())

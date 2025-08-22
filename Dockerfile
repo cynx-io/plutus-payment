@@ -22,11 +22,11 @@ WORKDIR /app
 COPY --from=builder /app/plutus .
 
 # Copy config and env files if needed
-COPY config.json .
-COPY .env .
+COPY config.json* .
+COPY .env* .
 
 # Expose the port your app uses
-EXPOSE 5002
+EXPOSE 5006
 
 # Run the binary
 CMD ["./plutus"]

@@ -11,12 +11,12 @@ func ToProtoInvoiceStatus(status string) proto.PaymentInvoiceStatus {
 
 	switch upperString {
 	case "PENDING":
-		return proto.PaymentInvoiceStatus_PAYMENT_INVOICE_STATUS_PENDING
+		return proto.PaymentInvoiceStatus_PENDING
 	case "FAILED":
-		return proto.PaymentInvoiceStatus_PAYMENT_INVOICE_STATUS_FAILED
+		return proto.PaymentInvoiceStatus_FAILED
 	case "COMPLETED":
-		return proto.PaymentInvoiceStatus_PAYMENT_INVOICE_STATUS_COMPLETED
+		return proto.PaymentInvoiceStatus_COMPLETED
 	}
 
-	return proto.PaymentInvoiceStatus_PAYMENT_INVOICE_STATUS_FAILED
+	return proto.PaymentInvoiceStatus_FAILED
 }

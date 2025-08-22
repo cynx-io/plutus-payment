@@ -17,7 +17,7 @@
     "username": "cynx",
     "password": "derwin334",
     "dialect": "mysql",
-    "autoMigrate": false,
+    "autoMigrate": true,
     "pool": {
       "max": 5,
       "min": 0,
@@ -27,5 +27,8 @@
   },
   "hermes": {
     "url": "devspace:31501"
+  },
+  "ananke": {
+    "url": "devspace:31507"
   }
 }

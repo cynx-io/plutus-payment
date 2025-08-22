@@ -23,7 +23,7 @@ message WebhookXenditPaymentSessionRequest {
 message PaymentSessionWebhookData {
   string id = 1;
   repeated string allowed_payment_channels = 2;
-  int64 amount = 3;
+  float amount = 3;
   ChannelProperties channel_properties = 4;
   string country = 5;
   google.protobuf.Timestamp created = 6;
