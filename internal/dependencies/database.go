@@ -60,8 +60,7 @@ func (client *DatabaseClient) Close() error {
 func (client *DatabaseClient) RunMigrations(ctx context.Context) error {
 
 	logger.Info(ctx, "Running database migrations")
-	//err := client.Db.AutoMigrate(entity.TblExample{})
-	err := client.Db.AutoMigrate(entity.TblCustomer{}, entity.TblPaymentInvoice{})
+	err := client.Db.AutoMigrate(entity.TblCustomer{}, entity.TblPaymentInvoice{}, entity.TblTokenPriceList{}, entity.TblProductPriceList{}, entity.TblBalance{}, entity.TblTokenInvoice{})
 	if err != nil {
 		return fmt.Errorf("failed to run migrations: %w", err)
 	}

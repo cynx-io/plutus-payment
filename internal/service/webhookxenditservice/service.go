@@ -10,6 +10,8 @@ import (
 type Service struct {
 	TblCustomer       *database.TblCustomer
 	TblPaymentInvoice *database.TblPaymentInvoice
+	TblTokenInvoice   *database.TblTokenInvoice
+	TblBalance        *database.TblBalance
 
 	HermesUserClient     pbhermes.HermesUserServiceClient
 	AnankePreorderClient pbananke.PreorderServiceClient

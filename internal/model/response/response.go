@@ -38,7 +38,7 @@ func ErrorInternal[Resp response.Generic](resp Resp) {
 }
 
 func ErrorHermes[Resp response.Generic](resp Resp) {
-	setResponse(resp, codeInternalError)
+	setResponse(resp, codeHermesError)
 }
 
 func ErrorDatabaseCustomer[Resp response.Generic](resp Resp) {
@@ -55,4 +55,24 @@ func ErrorXendit[Resp response.Generic](resp Resp) {
 
 func ErrorAnanke[Resp response.Generic](resp Resp) {
 	setResponse(resp, codeAnankeError)
+}
+
+func ErrorDatabaseBalance[Resp response.Generic](resp Resp) {
+	setResponse(resp, codeDatabaseBalanceError)
+}
+
+func ErrorDatabaseProductPriceList[Resp response.Generic](resp Resp) {
+	setResponse(resp, codeDatabaseProductPriceListError)
+}
+
+func ErrorDatabaseTokenPriceList[Resp response.Generic](resp Resp) {
+	setResponse(resp, codeDatabaseTokenPriceListError)
+}
+
+func ErrorInsufficientBalance[Resp response.Generic](resp Resp) {
+	setResponse(resp, codeInsufficientBalance)
+}
+
+func ErrorDatabaseTokenInvoice[Resp response.Generic](resp Resp) {
+	setResponse(resp, codeDatabaseTokenInvoiceError)
 }

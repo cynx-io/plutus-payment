@@ -10,10 +10,12 @@ import (
 )
 
 type Repos struct {
-	ExampleRepo *database.ExampleRepo
-
-	TblCustomer       *database.TblCustomer
-	TblPaymentInvoice *database.TblPaymentInvoice
+	TblCustomer         *database.TblCustomer
+	TblPaymentInvoice   *database.TblPaymentInvoice
+	TblProductPriceList *database.TblProductPriceList
+	TblTokenInvoice     *database.TblTokenInvoice
+	TblBalance          *database.TblBalance
+	TblTokenPriceList   *database.TblTokenPriceList
 
 	HermesUserClient     pbhermes.HermesUserServiceClient
 	AnankePreorderClient pbananke.PreorderServiceClient
@@ -22,10 +24,12 @@ type Repos struct {
 
 func NewRepos(dependencies *Dependencies) *Repos {
 	return &Repos{
-		ExampleRepo: database.NewExampleRepo(dependencies.DatabaseClient.Db),
-
-		TblCustomer:       database.NewCustomerRepo(dependencies.DatabaseClient.Db),
-		TblPaymentInvoice: database.NewPaymentInvoiceRepo(dependencies.DatabaseClient.Db),
+		TblCustomer:         database.NewCustomerRepo(dependencies.DatabaseClient.Db),
+		TblPaymentInvoice:   database.NewPaymentInvoiceRepo(dependencies.DatabaseClient.Db),
+		TblProductPriceList: database.NewProductPriceListRepo(dependencies.DatabaseClient.Db),
+		TblTokenInvoice:     database.NewTokenInvoiceRepo(dependencies.DatabaseClient.Db),
+		TblBalance:          database.NewBalanceRepo(dependencies.DatabaseClient.Db),
+		TblTokenPriceList:   database.NewTokenPriceListRepo(dependencies.DatabaseClient.Db),
 
 		HermesUserClient:     micro.NewHermesUserClient(),
 		AnankePreorderClient: micro.NewAnankeUserClient(),

@@ -21,7 +21,7 @@ func (s *Service) CreatePaymentInvoice(ctx context.Context, req *pb.CreatePaymen
 	customer, err := s.TblCustomer.GetCustomerByUserId(ctx, req.UserId)
 	if err != nil {
 		if !errors.Is(err, gorm.ErrRecordNotFound) {
-			response.ErrorInternal(resp)
+			response.ErrorDatabaseCustomer(resp)
 			return err
 		}
 	}

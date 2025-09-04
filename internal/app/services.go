@@ -1,23 +1,24 @@
 package app
 
 import (
-	"github.com/cynx-io/plutus-payment/internal/service/exampleservice"
 	"github.com/cynx-io/plutus-payment/internal/service/paymentservice"
 	"github.com/cynx-io/plutus-payment/internal/service/webhookxenditservice"
 )
 
 type Services struct {
-	ExampleService       *exampleservice.Service
 	PaymentService       *paymentservice.Service
 	WebhookXenditService *webhookxenditservice.Service
 }
 
 func NewServices(repos *Repos) *Services {
 	return &Services{
-		ExampleService: exampleservice.New(repos.ExampleRepo),
 		PaymentService: &paymentservice.Service{
-			TblCustomer:       repos.TblCustomer,
-			TblPaymentInvoice: repos.TblPaymentInvoice,
+			TblCustomer:         repos.TblCustomer,
+			TblPaymentInvoice:   repos.TblPaymentInvoice,
+			TblProductPriceList: repos.TblProductPriceList,
+			TblTokenInvoice:     repos.TblTokenInvoice,
+			TblBalance:          repos.TblBalance,
+			TblTokenPriceList:   repos.TblTokenPriceList,
 
 			HermesUserClient: repos.HermesUserClient,
 
@@ -26,6 +27,8 @@ func NewServices(repos *Repos) *Services {
 		WebhookXenditService: &webhookxenditservice.Service{
 			TblCustomer:       repos.TblCustomer,
 			TblPaymentInvoice: repos.TblPaymentInvoice,
+			TblTokenInvoice:   repos.TblTokenInvoice,
+			TblBalance:        repos.TblBalance,
 
 			HermesUserClient:     repos.HermesUserClient,
 			AnankePreorderClient: repos.AnankePreorderClient,

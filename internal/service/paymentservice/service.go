@@ -7,8 +7,12 @@ import (
 )
 
 type Service struct {
-	TblCustomer       *database.TblCustomer
-	TblPaymentInvoice *database.TblPaymentInvoice
+	TblCustomer         *database.TblCustomer
+	TblPaymentInvoice   *database.TblPaymentInvoice
+	TblProductPriceList *database.TblProductPriceList
+	TblTokenInvoice     *database.TblTokenInvoice
+	TblBalance          *database.TblBalance
+	TblTokenPriceList   *database.TblTokenPriceList
 
 	HermesUserClient pbhermes.HermesUserServiceClient
 
