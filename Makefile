@@ -50,3 +50,8 @@ build_and_push:
 	docker build -t plutus-payment-dev:latest .
 	docker tag plutus-payment-dev:latest derwin334/plutus-payment-dev:latest
 	docker push derwin334/plutus-payment-dev:latest
+
+build_and_push_prod:
+	docker build -t plutus-payment-prod:latest .
+	docker tag plutus-payment-prod:latest derwin334/plutus-payment-prod:latest
+	docker push derwin334/plutus-payment-prod:latest

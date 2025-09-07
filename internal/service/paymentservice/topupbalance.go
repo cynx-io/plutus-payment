@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	pb "github.com/cynx-io/plutus-payment/api/proto/gen/plutus"
+	"github.com/cynx-io/plutus-payment/internal/model/entity"
 	"github.com/cynx-io/plutus-payment/internal/model/response"
 	"gorm.io/gorm"
 )
@@ -39,6 +40,19 @@ func (s *Service) TopUpBalance(ctx context.Context, req *pb.TopUpBalanceRequest,
 	err = s.CreatePaymentInvoice(ctx, invoiceReq, resp)
 	if err != nil {
 		return err
+	}
+
+	err = s.TblTokenInvoice.CreateTokenInvoice(ctx, &entity.TblTokenInvoice{
+		TokenPriceListId: &req.TokenPriceListId,
+		UserId:           invoiceReq.UserId,
+		IsTopUp:          true,
+		PaymentInvoiceId: &resp.Payment.Id,
+		Status:           int32(pb.PaymentInvoiceStatus_PENDING),
+		TokenUsed:        -tokenPriceList.Token,
+	})
+	if err != nil {
+		response.ErrorDatabaseTokenPriceList(resp)
+		return errors.New("create token invoice failed: " + err.Error())
 	}
 
 	response.Success(resp)

@@ -1,6 +1,7 @@
 package response
 
 import (
+	core "github.com/cynx-io/cynx-core/proto/gen"
 	"github.com/cynx-io/cynx-core/src/response"
 )
 
@@ -10,6 +11,7 @@ func setResponse[Resp response.Generic](resp Resp, code response.Code) {
 }
 
 func Success[Resp response.Generic](resp Resp) {
+	resp.GetBase().Status = core.Status_SUCCESS
 	setResponse(resp, CodeSuccess)
 }
 
@@ -27,14 +29,6 @@ func ErrorNotAllowed[Resp response.Generic](resp Resp) {
 
 func ErrorNotFound[Resp response.Generic](resp Resp) {
 	setResponse(resp, codeNotFound)
-}
-
-func ErrorInvalidCredentials[Resp response.Generic](resp Resp) {
-	setResponse(resp, codeInvalidCredentials)
-}
-
-func ErrorInternal[Resp response.Generic](resp Resp) {
-	setResponse(resp, codeInternalError)
 }
 
 func ErrorHermes[Resp response.Generic](resp Resp) {
@@ -70,6 +64,7 @@ func ErrorDatabaseTokenPriceList[Resp response.Generic](resp Resp) {
 }
 
 func ErrorInsufficientBalance[Resp response.Generic](resp Resp) {
+	resp.GetBase().Status = core.Status_INSUFFICIENT_TOKEN
 	setResponse(resp, codeInsufficientBalance)
 }
 

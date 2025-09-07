@@ -52,7 +52,7 @@ func (T *TblBalance) IncrementBalance(ctx context.Context, userId int32, delta f
 		Clauses(clause.OnConflict{
 			Columns: []clause.Column{{Name: "user_id"}},
 			DoUpdates: clause.Assignments(map[string]interface{}{
-				"amount": gorm.Expr("amount + ?", delta),
+				"token_balance": gorm.Expr("token_balance + ?", delta),
 			}),
 		}).
 		Create(&entity.TblBalance{
@@ -64,8 +64,8 @@ func (T *TblBalance) IncrementBalance(ctx context.Context, userId int32, delta f
 func (T *TblBalance) DecrementBalance(ctx context.Context, userId int32, delta float32) error {
 	result := T.DB.WithContext(ctx).
 		Model(&entity.TblBalance{}).
-		Where("user_id = ? AND amount >= ?", userId, delta).
-		Update("amount", gorm.Expr("amount - ?", delta))
+		Where("user_id = ? AND token_balance >= ?", userId, delta).
+		Update("token_balance", gorm.Expr("token_balance - ?", delta))
 
 	if result.RowsAffected == 0 {
 		return errors.New("insufficient balance or user not found")

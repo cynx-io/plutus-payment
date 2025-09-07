@@ -22,7 +22,7 @@ func (s *Server) GetBalance(ctx context.Context, req *core.GenericRequest) (*pro
 	return grpc.HandleGrpc(ctx, req, &resp, s.Services.PaymentService.GetBalance)
 }
 
-func (s *Server) GetProductListById(ctx context.Context, req *proto.GetProductPriceListByIdRequest) (*proto.ProductPriceListResponse, error) {
+func (s *Server) GetProductPriceListById(ctx context.Context, req *proto.GetProductPriceListByIdRequest) (*proto.ProductPriceListResponse, error) {
 	var resp proto.ProductPriceListResponse
 	return grpc.HandleGrpc(ctx, req, &resp, s.Services.PaymentService.GetProductPriceListById)
 }
